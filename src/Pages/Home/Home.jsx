@@ -1,8 +1,8 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import HomeServices from "./HomeServices";
 import OverView from "./OverView";
 import PhotoGellary from "./PhotoGellary";
-import Services from "./Services";
 
 const Home = () => {
   return (
@@ -17,9 +17,9 @@ const Home = () => {
       <OverView />
       <div id="photoGellary" className="my-5">
         <h3 className="text-dark text-center fw-bold mb-4">SERVICES</h3>
-        <Services />
+        <HomeServices />
       </div>
-      <div id="photoGellary" className="my-5">
+      <div id="photoGellary" className="my-5 mb-5">
         <h3 className="text-dark text-center fw-bold mb-4">GELLARY</h3>
         <PhotoGellary />
       </div>

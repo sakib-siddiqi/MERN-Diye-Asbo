@@ -2,10 +2,9 @@ import React from "react";
 import { Row } from "react-bootstrap";
 import SignleService from "./SignleService";
 
-const Services = () => {
+const HomeServices = () => {
   return (
     <Row xs={1} md={2} lg={3} className="g-4">
-      <SignleService />
       <SignleService />
       <SignleService />
       <SignleService />
@@ -16,4 +15,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default HomeServices;

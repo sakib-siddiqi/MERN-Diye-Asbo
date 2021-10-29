@@ -1,0 +1,3 @@
+.tab-pane.active::before {
+  display: none !important;
+}

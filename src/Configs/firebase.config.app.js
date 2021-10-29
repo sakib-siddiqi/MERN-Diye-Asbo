@@ -1,3 +1,4 @@
+import { initializeApp } from "firebase/app";
 const firebaseConfig = {
   apiKey: process.env.APIKEY,
   authDomain: process.env.AUTHDOMAIN,
@@ -6,4 +7,5 @@ const firebaseConfig = {
   messagingSenderId: process.env.MESSAGEINGSENDERID,
   appId: process.env.APPID,
 };
-export default firebaseConfig;
+const firebaseApp = initializeApp(firebaseConfig);
+export default firebaseApp;
