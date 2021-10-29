@@ -1,5 +1,5 @@
 #header {
-  min-height: 80vh;
+  min-height: 90vh;
 }
 .gellary-photo {
   object-fit: cover;
@@ -10,4 +10,10 @@
 .gellary-photo:hover {
   box-shadow: 0 10px 40px 0 #00000010;
   border: 5px solid var(--primary);
+}
+/* service */
+.service-img {
+  object-fit: cover;
+  aspect-ratio: 16/9;
+  border-radius: 6px;
 }

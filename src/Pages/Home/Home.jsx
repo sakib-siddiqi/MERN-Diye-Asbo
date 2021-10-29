@@ -1,6 +1,8 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import OverView from "./OverView";
 import PhotoGellary from "./PhotoGellary";
+import Services from "./Services";
 
 const Home = () => {
   return (
@@ -12,12 +14,13 @@ const Home = () => {
         </h1>
         <button className="my-btn rounded-pill py-3 px-5">Have A Look</button>
       </div>
-      <div id="photoGellary" className="my-5">
-        <h3 className="text-dark text-center fw-bold mb-4">GELLARY</h3>
-        <PhotoGellary />
-      </div>
+      <OverView />
       <div id="photoGellary" className="my-5">
         <h3 className="text-dark text-center fw-bold mb-4">SERVICES</h3>
+        <Services />
+      </div>
+      <div id="photoGellary" className="my-5">
+        <h3 className="text-dark text-center fw-bold mb-4">GELLARY</h3>
         <PhotoGellary />
       </div>
     </Container>
