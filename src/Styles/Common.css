@@ -1,0 +1,26 @@
+@import url("./root.css");
+.my-btn {
+  background: var(--dark);
+  color: var(--white);
+  border: none;
+  outline: none;
+  box-shadow: 0px 10px 20px rgba(130, 119, 255, 0.1);
+  font-size: 80%;
+}
+.my-btn:focus,
+.my-btn:active {
+  box-shadow: none;
+}
+/* letter spacing */
+.ls1 {
+  letter-spacing: 0.05em;
+}
+.ls2 {
+  letter-spacing: 0.1em;
+}
+/* center */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

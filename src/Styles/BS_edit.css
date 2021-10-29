@@ -1,0 +1,36 @@
+@import url("./root.css");
+.text-primary {
+  color: var(--primary) !important;
+}
+.text-dark {
+  color: var(--dark) !important;
+}
+.text-muted {
+  color: var(--muted) !important;
+}
+.fw-bold {
+  font-weight: 600 !important;
+}
+.fw-normal {
+  font-weight: 500 !important;
+}
+
+/* active */
+.active {
+  position: relative;
+}
+.active::before {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  content: "";
+  display: block;
+  width: 100%;
+  max-width: 7px;
+  aspect-ratio: 1;
+  margin: 0;
+  padding: 0;
+  background: var(--primary);
+  border-radius: 1000px;
+}

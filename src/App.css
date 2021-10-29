@@ -1,0 +1,13 @@
+@import url("./Styles/root.css");
+@import url("./Styles/Common.css");
+@import url("./Styles/externalLinks.css");
+@import url("./Styles/BS_edit.css");
+@import url("./Pages//Home/Home.css");
+* {
+  font-family: "Poppins", sans-serif !important;
+  letter-spacing: 0.05em;
+}
+body,
+html {
+  background-color: var(--white);
+}
