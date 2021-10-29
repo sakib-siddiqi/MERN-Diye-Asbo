@@ -1,4 +1,4 @@
-import firebaseApp from "../Configs/firebase.config.app";
+import { initializeApp } from "firebase/app";
 import {
   GoogleAuthProvider,
   getAuth,
@@ -10,14 +10,15 @@ import {
 
 import { useEffect } from "react";
 import { useState } from "react";
+import firebaseConfig from "../Configs/firebase.config.app";
+/**firebase app initializing */
+initializeApp(firebaseConfig);
 /**
  * Auth
  * google provider
  */
 const auth = getAuth();
 const googleProvider = new GoogleAuthProvider();
-/**firebase app initializing */
-firebaseApp();
 /**
  * Main Function===============================================================
  * Main Function===============================================================
@@ -30,15 +31,22 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+  const [conFirm, setConFirm] = useState(false);
+  const handleConFirm = (doit) => {
+    setConFirm(doit);
+  };
   /**
    * Google Signin
    * signout
    * delete User
    */
-  const handleSignin = () => {
+  const handleSignin = (historyPush) => {
     setLoading(true);
-    return signInWithPopup(user, googleProvider)
-      .then((res) => setUser(res.user))
+    signInWithPopup(auth, googleProvider)
+      .then((res) => {
+        historyPush();
+        setUser(res.user);
+      })
       .catch((err) => setError(err.code))
       .finally(() => setLoading(false));
   };
@@ -60,17 +68,30 @@ const useFirebase = () => {
    * auth state changed
    */
   useEffect(() => {
-    return onAuthStateChanged(auth, (user) =>
-      user ? setUser(user) : setUser({})
-    );
+    return onAuthStateChanged(auth, (user) => {
+      try {
+        user ? setUser(user) : setUser({});
+      } catch (err) {
+        setError(err.code);
+      } finally {
+        setLoading(false);
+      }
+    });
   }, []);
   return {
     user,
     error,
     loading,
+    conFirm,
+    handleConFirm,
     handleSignin,
     handleSignOut,
     handleDeleteUser,
   };
 };
 export default useFirebase;
+
+/**
+ * create new funct to setuser
+ *
+ */
