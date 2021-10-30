@@ -11,6 +11,7 @@ import Services from "./Pages/Services/Services";
 import Footer from "./Shared/Footer/Footer";
 import Header from "./Shared/Header/Header";
 import PrivateRoute from "./Shared/PrivateRoute/PrivateRoute";
+import NotFound from "./Pages/404/NotFound";
 function App() {
   const { loading } = useFirebase();
   return (
@@ -33,6 +34,7 @@ function App() {
                     <DashBoard />
                   </PrivateRoute>
                   <Route path="/services/:_id" component={Services} />
+                  <Route path="*" component={NotFound} />
                 </Switch>
               </div>
               <Footer />

@@ -61,6 +61,18 @@ const AddService = () => {
                   />
                 </div>
               </div>
+              <div className="mb-3">
+                <label htmlFor="s-img" className="form-label">
+                  <p className="mb-1 text-dark fw-normal ls1">Image</p>
+                </label>
+                <input
+                  type="link"
+                  className="form-control"
+                  id="s-img"
+                  placeholder="Service Image"
+                  {...register("s_image", { required: true })}
+                />
+              </div>
               {(errors.s_title || errors.s_description || errors.per_houre) && (
                 <p className="text-danger">This field is required</p>
               )}

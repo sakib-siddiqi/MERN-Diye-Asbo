@@ -5,8 +5,8 @@ import gellary from "./gellary";
 const PhotoGellary = () => {
   return (
     <Row xs={1} md={3} lg={4} className="g-4">
-      {gellary.map((photo) => (
-        <Col>
+      {gellary.map((photo, index) => (
+        <Col key={index}>
           <img src={photo} alt="photoGellary" className="w-100 gellary-photo" />
         </Col>
       ))}
