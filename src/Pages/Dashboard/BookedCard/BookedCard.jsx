@@ -2,8 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ButtonGroup, Button, Card, Col } from "react-bootstrap";
 import Loader from "../../../Shared/Loader";
-
+import { MdCancel } from "react-icons/md";
+import useAuth from "../../../Hooks/useAuth";
 const BookedCard = ({ serviceData }) => {
+  const [conFirm, setConFirm] = useState();
+  const [conFirmText, setConFirmText] = useState();
   const [bookedService, setBookedService] = useState({});
   useEffect(() => {
     axios
@@ -11,6 +14,10 @@ const BookedCard = ({ serviceData }) => {
       .then((res) => setBookedService(res.data))
       .catch((err) => console.log(err));
   }, []);
+
+  /**
+   * Handle Approve
+   */
   const handleApprove = () => {
     axios
       .put("https://safe-reef-55674.herokuapp.com/bookings", {
@@ -31,6 +38,10 @@ const BookedCard = ({ serviceData }) => {
       })
       .catch((err) => console.log("erro", err.code));
   };
+  /**
+   * Handle Cancle
+   *
+   */
   const handleCancle = () => {
     axios
       .delete(
@@ -44,6 +55,13 @@ const BookedCard = ({ serviceData }) => {
       })
       .catch((err) => console.log("erro", err.code));
   };
+  /**
+   *
+   *
+   *
+   *
+   *
+   */
   return (
     <>
       {bookedService.s_title ? (
@@ -68,11 +86,41 @@ const BookedCard = ({ serviceData }) => {
                   </span>
                 </div>
               </div>
+              {conFirm && (
+                <div className="mb-3">
+                  <label htmlFor="confirm" className="form-label">
+                    Type <b>CONFIRM</b>
+                  </label>
+                  <div className="input-group">
+                    <input
+                      onBlur={(e) => setConFirmText(e.target.value)}
+                      id="confirm"
+                      className="form-control text-danger fw-bolder ls2"
+                    />{" "}
+                    <button
+                      className="input-group-text btn btn-primary text-light center"
+                      onClick={() => setConFirm(false)}
+                    >
+                      <MdCancel />
+                    </button>
+                  </div>
+                </div>
+              )}
               <ButtonGroup>
                 <Button variant="primary" onClick={handleApprove}>
                   Aprove
                 </Button>
-                <Button variant="danger" onClick={handleCancle}>
+                <Button
+                  variant="danger"
+                  onClick={() => {
+                    if (conFirmText === "CONFIRM") {
+                      setConFirm(false);
+                      handleCancle();
+                    } else {
+                      setConFirm(true);
+                    }
+                  }}
+                >
                   Cancle
                 </Button>
               </ButtonGroup>

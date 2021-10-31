@@ -28,6 +28,7 @@ const PlaceOrder = () => {
     prasentService.status = "panding";
     const finalData = { ...prasentService, address: data };
 
+    setAlart("Wait Please...");
     // get bookings products
     axios.get("https://safe-reef-55674.herokuapp.com/bookings").then((res) => {
       const inDB = res.data.find(
@@ -35,7 +36,6 @@ const PlaceOrder = () => {
           book.s_title === finalData.s_title &&
           book.address.email === finalData.address.email
       );
-      console.log(inDB);
       if (inDB) {
         setAlart("Already Booked 💥");
       } else {
