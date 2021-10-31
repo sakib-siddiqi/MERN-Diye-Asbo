@@ -8,7 +8,7 @@
 # DIYE ASBO
 ### COURIER SERVICE WEB SITE
 
-### `[TAKE A LOOK 😍](https://diye-asbo-s15.netlify.app/)`
+### [`TAKE A LOOK 😍`](https://diye-asbo-s15.netlify.app/)
 
 #### CRUD
 - *add service*
