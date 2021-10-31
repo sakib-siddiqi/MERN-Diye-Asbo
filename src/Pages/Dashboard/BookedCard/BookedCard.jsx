@@ -45,42 +45,44 @@ const BookedCard = ({ serviceData }) => {
       .catch((err) => console.log("erro", err.code));
   };
   return (
-    <Col>
+    <>
       {bookedService.s_title ? (
-        <Card>
-          <Card.Body>
-            <h4>{bookedService.s_title}</h4>
-            <span className="font-monospace mb-4 d-inline-block">
-              {bookedService.address.email}
-            </span>
-            <span className="nav-item py-2 px-3 rounded-2 shadow-sm d-inline-block mb-3">
-              {bookedService.status}
-            </span>
-            <div className="mb-3">
-              <div>
-                <span className="badge bg-secondary p-2 rounded-1">
-                  {bookedService.address.from}
-                </span>{" "}
-                to{" "}
-                <span className="badge bg-primary p-2 rounded-1">
-                  {bookedService.address.to}
-                </span>
+        <Col>
+          <Card>
+            <Card.Body>
+              <h4>{bookedService.s_title}</h4>
+              <span className="font-monospace mb-4 d-inline-block">
+                {bookedService.address.email}
+              </span>
+              <span className="nav-item py-2 px-3 rounded-2 shadow-sm d-inline-block mb-3">
+                {bookedService.status}
+              </span>
+              <div className="mb-3">
+                <div>
+                  <span className="badge bg-secondary p-2 rounded-1">
+                    {bookedService.address.from}
+                  </span>{" "}
+                  to{" "}
+                  <span className="badge bg-primary p-2 rounded-1">
+                    {bookedService.address.to}
+                  </span>
+                </div>
               </div>
-            </div>
-            <ButtonGroup>
-              <Button variant="primary" onClick={handleApprove}>
-                Aprove
-              </Button>
-              <Button variant="danger" onClick={handleCancle}>
-                Cancle
-              </Button>
-            </ButtonGroup>
-          </Card.Body>
-        </Card>
+              <ButtonGroup>
+                <Button variant="primary" onClick={handleApprove}>
+                  Aprove
+                </Button>
+                <Button variant="danger" onClick={handleCancle}>
+                  Cancle
+                </Button>
+              </ButtonGroup>
+            </Card.Body>
+          </Card>
+        </Col>
       ) : (
         bookedService.s_title && <Loader />
       )}
-    </Col>
+    </>
   );
 };
 
