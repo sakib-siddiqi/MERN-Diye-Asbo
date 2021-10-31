@@ -11,7 +11,7 @@ const DashBoard = () => {
   const { user } = useAuth();
   useEffect(() => {
     axios
-      .get("http://localhost:5000/bookings")
+      .get("https://safe-reef-55674.herokuapp.com//bookings")
       .then((res) => setAllBookings(res.data))
       .catch((err) => console.log(err.code));
   }, []);

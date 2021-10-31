@@ -7,7 +7,7 @@ const HomeServices = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/services")
+      .get("https://safe-reef-55674.herokuapp.com//services")
       .then((res) => setServices(res.data));
   }, []);
   console.log(services);
