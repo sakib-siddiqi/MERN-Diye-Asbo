@@ -4,7 +4,7 @@ import { Col, Container, Row } from "react-bootstrap";
 const OverView = () => {
   return (
     <div className="my-5 bg-primary w-100 mx-0 rounded-3 shadow-lg">
-      <Row xs={12} md={2} className="g-4">
+      <Row xs={1} md={2}>
         <Col className=" text-light p-4">
           <Container>
             <h3 className=" fw-bold ls1">YOUR FRIEND</h3>
