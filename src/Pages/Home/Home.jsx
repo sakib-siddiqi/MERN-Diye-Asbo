@@ -1,10 +1,13 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import useAuth from "../../Hooks/useAuth";
 import HomeServices from "./HomeServices";
 import OverView from "./OverView";
 import PhotoGellary from "./PhotoGellary";
 
 const Home = () => {
+  const { user } = useAuth();
+  console.log(user);
   return (
     <Container>
       <div id="header" className="center flex-column">

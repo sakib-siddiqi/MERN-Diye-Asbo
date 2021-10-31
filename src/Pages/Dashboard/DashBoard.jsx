@@ -1,9 +1,23 @@
-import React from "react";
-import { Container, Tabs, Tab } from "react-bootstrap";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Container, Tabs, Tab, Row } from "react-bootstrap";
+import useAuth from "../../Hooks/useAuth";
 import AddService from "./AddService/AddService";
+import BookedCard from "./BookedCard/BookedCard";
 import UserProfile from "./UserProfile/UserProfile";
 
 const DashBoard = () => {
+  const [allBookings, setAllBookings] = useState([]);
+  const { user } = useAuth();
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/bookings")
+      .then((res) => setAllBookings(res.data))
+      .catch((err) => console.log(err.code));
+  }, []);
+  const myBookings = allBookings.filter(
+    (books) => books.address.email === user.email
+  );
   return (
     <Container className="my-5">
       <Tabs
@@ -15,10 +29,18 @@ const DashBoard = () => {
           <UserProfile />
         </Tab>
         <Tab eventKey="my-bookings" title="My Bookings">
-          <p>ksjasdfasdfdfkl</p>
+          <Row xs={12} md={6} lg={4} className="g-4">
+            {myBookings.map((service) => (
+              <BookedCard serviceData={service} />
+            ))}
+          </Row>
         </Tab>
         <Tab eventKey="all-bookings" title="All Bookings">
-          <p>asdfkljklsdfjlkjsadf</p>
+          <Row xs={12} md={6} lg={4} className="g-4">
+            {allBookings.map((service) => (
+              <BookedCard serviceData={service} />
+            ))}
+          </Row>
         </Tab>
         <Tab eventKey="add-service" title="Add New Service">
           <AddService />

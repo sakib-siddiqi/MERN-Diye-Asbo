@@ -17,9 +17,6 @@ const Header = () => {
             <Nav.Link className="text-center" as={NavLink} exact to="/">
               Home
             </Nav.Link>
-            <Nav.Link className="text-center" as={NavLink} to="/services">
-              Services
-            </Nav.Link>
             {user.uid ? (
               <>
                 <Nav.Link className="text-center" as={NavLink} to="/dashboard">

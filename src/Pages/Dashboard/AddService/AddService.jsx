@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { Col, Row, Card } from "react-bootstrap";
 import { useForm } from "react-hook-form";
@@ -10,7 +11,11 @@ const AddService = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    data.status = [];
+    axios
+      .post("http://localhost:5000/services", data)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err.code));
     reset();
   };
   return (
@@ -44,8 +49,8 @@ const AddService = () => {
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="per-houre" className="form-label">
-                  Per Houre
+                <label htmlFor="per-km" className="form-label">
+                  Per Kilometer
                 </label>
                 <div className="input-group mb-3">
                   <span className="input-group-text">
@@ -54,10 +59,10 @@ const AddService = () => {
                   <input
                     type="number"
                     className="form-control"
-                    id="per-houre"
-                    placeholder="$/h"
+                    id="per-km"
+                    placeholder="$/km"
                     min={1}
-                    {...register("per_houre", { required: true })}
+                    {...register("per_km", { required: true })}
                   />
                 </div>
               </div>

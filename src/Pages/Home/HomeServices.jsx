@@ -1,16 +1,21 @@
-import React from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Row } from "react-bootstrap";
 import SignleService from "./SignleService";
 
 const HomeServices = () => {
+  const [services, setServices] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/services")
+      .then((res) => setServices(res.data));
+  }, []);
+  console.log(services);
   return (
     <Row xs={1} md={2} lg={3} className="g-4">
-      <SignleService />
-      <SignleService />
-      <SignleService />
-      <SignleService />
-      <SignleService />
-      <SignleService />
+      {services.map((service) => (
+        <SignleService serviceData={service} key={service._id} />
+      ))}
     </Row>
   );
 };
