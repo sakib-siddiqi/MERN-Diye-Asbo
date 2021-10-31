@@ -6,15 +6,15 @@ const useFetch = () => {
   const [bookings, setBookings] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/services")
+      .get("https://safe-reef-55674.herokuapp.com/services")
       .then((res) => setServices(res.data));
     axios
-      .get("http://localhost:5000/bookings")
+      .get("https://safe-reef-55674.herokuapp.com/bookings")
       .then((res) => setBookings(res.data));
   }, []);
   const reloadBooking = () => {
     axios
-      .get("http://localhost:5000/bookings")
+      .get("https://safe-reef-55674.herokuapp.com/bookings")
       .then((res) => setBookings(res.data));
   };
   return {

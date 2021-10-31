@@ -7,18 +7,22 @@ const BookedCard = ({ serviceData }) => {
   const [bookedService, setBookedService] = useState({});
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/bookings/${serviceData._id}`)
+      .get(`https://safe-reef-55674.herokuapp.com/bookings/${serviceData._id}`)
       .then((res) => setBookedService(res.data))
       .catch((err) => console.log(err));
   }, []);
   const handleApprove = () => {
     axios
-      .put("http://localhost:5000/bookings", { id: serviceData._id })
+      .put("https://safe-reef-55674.herokuapp.com/bookings", {
+        id: serviceData._id,
+      })
       .then((res) => {
         console.log(res.data.acknowledged);
         if (res.data.acknowledged) {
           axios
-            .get(`http://localhost:5000/bookings/${serviceData._id}`)
+            .get(
+              `https://safe-reef-55674.herokuapp.com/bookings/${serviceData._id}`
+            )
             .then((res) => {
               setBookedService(res.data);
             })
@@ -29,7 +33,9 @@ const BookedCard = ({ serviceData }) => {
   };
   const handleCancle = () => {
     axios
-      .delete(`http://localhost:5000/bookings/${serviceData._id}`)
+      .delete(
+        `https://safe-reef-55674.herokuapp.com/bookings/${serviceData._id}`
+      )
       .then((res) => {
         console.log(res.data.acknowledged);
         if (res.data.acknowledged) {

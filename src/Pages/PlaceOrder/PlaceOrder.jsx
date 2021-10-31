@@ -29,7 +29,7 @@ const PlaceOrder = () => {
     const finalData = { ...prasentService, address: data };
 
     // get bookings products
-    axios.get("http://localhost:5000/bookings").then((res) => {
+    axios.get("https://safe-reef-55674.herokuapp.com/bookings").then((res) => {
       const inDB = res.data.find(
         (book) =>
           book.s_title === finalData.s_title &&
@@ -40,7 +40,7 @@ const PlaceOrder = () => {
         setAlart("Already Booked 💥");
       } else {
         axios
-          .post("http://localhost:5000/bookings", finalData)
+          .post("https://safe-reef-55674.herokuapp.com/bookings", finalData)
           .then((res) => {
             console.log(res.data);
             setAlart("DONE ✅");
