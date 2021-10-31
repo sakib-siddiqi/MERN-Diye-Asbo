@@ -54,9 +54,37 @@ const client = new MongoClient(uri);
       const result = await AllBookings.find({}).toArray();
       res.json(result);
     });
+    /**
+     *  update
+     */
+    app.put("/bookings", async (req, res) => {
+      const id = req.body.id;
+      const query = { _id: ObjectId(id) };
+      const updateed = { $set: { status: "aproved" } };
+      const result = await AllBookings.updateOne(query, updateed);
+      res.json(result);
+    });
+    /**
+     *  getOne
+     */
+    app.get("/bookings/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const result = await AllBookings.findOne(query);
+      res.json(result);
+    });
+    /**
+     *  delete One
+     */
+    app.delete("/bookings/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const result = await AllBookings.deleteOne(query);
+      res.json(result);
+    });
   } catch (err) {
-    console.log(err.code);
+    console.log(err);
   }
 })();
-app.get("/", (req, res) => res.send("server live now"));
+app.get("/", (req, res) => res.send("server live"));
 app.listen(port, () => console.log("running"));
