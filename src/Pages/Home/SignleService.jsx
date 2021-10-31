@@ -22,7 +22,7 @@ const SignleService = ({ serviceData }) => {
             to={`/service/${service_route}`}
             className="my-btn py-2 px-3 rounded-3 ls-2 mb-3 nav-link d-inline-block"
           >
-            TAKE IT
+            BOOK NOW
           </NavLink>
         </Card.Body>
       </Card>
