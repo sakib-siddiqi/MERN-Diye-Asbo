@@ -2,16 +2,14 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { useHistory, useParams } from "react-router";
+import { useParams } from "react-router";
 import useAuth from "../../Hooks/useAuth";
 import useData from "../../Hooks/useData";
 
 const PlaceOrder = () => {
-  const [bookings, setBookings] = useState([]);
   const [Alart, setAlart] = useState("");
   const { service_route } = useParams();
   const { services } = useData();
-  const history = useHistory();
   const { user } = useAuth();
   const {
     register,
@@ -31,7 +29,7 @@ const PlaceOrder = () => {
     const finalData = { ...prasentService, address: data };
 
     // get bookings products
-    axios.get("https://safe-reef-55674.herokuapp.com//bookings").then((res) => {
+    axios.get("http://localhost:5000/bookings").then((res) => {
       const inDB = res.data.find(
         (book) =>
           book.s_title === finalData.s_title &&
@@ -42,7 +40,7 @@ const PlaceOrder = () => {
         setAlart("Already Booked 💥");
       } else {
         axios
-          .post("https://safe-reef-55674.herokuapp.com//bookings", finalData)
+          .post("http://localhost:5000/bookings", finalData)
           .then((res) => {
             console.log(res.data);
             setAlart("DONE ✅");

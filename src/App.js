@@ -1,5 +1,4 @@
 import React from "react";
-import { Spinner } from "react-bootstrap";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
 import AuthProvider from "./Context/AuthProvider";
@@ -13,17 +12,17 @@ import PrivateRoute from "./Shared/PrivateRoute/PrivateRoute";
 import NotFound from "./Pages/404/NotFound";
 import PlaceOrder from "./Pages/PlaceOrder/PlaceOrder";
 import DataProvider from "./Context/DataProvider";
+import Loader from "./Shared/Loader";
+import AllBookings from "./Pages/AllBookings/AllBookings";
 function App() {
   const { loading } = useFirebase();
   return (
     <>
-      {loading ? (
-        <div className="center" style={{ height: "100vh" }}>
-          <Spinner animation="grow" variant="dark" />
-        </div>
-      ) : (
-        <AuthProvider>
-          <DataProvider>
+      <AuthProvider>
+        <DataProvider>
+          {loading ? (
+            <Loader />
+          ) : (
             <BrowserRouter>
               <Header />
               <div style={{ minHeight: "60vh" }}>
@@ -33,6 +32,9 @@ function App() {
                   <PrivateRoute path="/dashboard">
                     <DashBoard />
                   </PrivateRoute>
+                  <PrivateRoute path="/all-bookings">
+                    <AllBookings />
+                  </PrivateRoute>
                   <PrivateRoute path="/service/:service_route">
                     <PlaceOrder />
                   </PrivateRoute>
@@ -41,9 +43,9 @@ function App() {
               </div>
               <Footer />
             </BrowserRouter>
-          </DataProvider>
-        </AuthProvider>
-      )}
+          )}
+        </DataProvider>
+      </AuthProvider>
     </>
   );
 }

@@ -13,7 +13,7 @@ const AddService = () => {
   const onSubmit = (data) => {
     data.status = [];
     axios
-      .post("https://safe-reef-55674.herokuapp.com//services", data)
+      .post("http://localhost:5000/services", data)
       .then((res) => console.log(res))
       .catch((err) => console.log(err.code));
     reset();

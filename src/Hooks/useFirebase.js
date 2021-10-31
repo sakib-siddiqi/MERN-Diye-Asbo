@@ -52,7 +52,7 @@ const useFirebase = () => {
   };
   const handleSignOut = () => {
     setLoading(true);
-    return signOut(auth)
+    signOut(auth)
       .then(() => setUser({}))
       .catch((err) => setError(err.code))
       .finally(() => setLoading(false));
@@ -68,7 +68,7 @@ const useFirebase = () => {
    * auth state changed
    */
   useEffect(() => {
-    return onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, (user) => {
       try {
         user ? setUser(user) : setUser({});
       } catch (err) {
@@ -78,6 +78,7 @@ const useFirebase = () => {
       }
     });
   }, []);
+
   return {
     user,
     error,

@@ -7,7 +7,7 @@ const Login = () => {
   const { handleSignin } = useAuth();
   const location = useLocation();
   const history = useHistory();
-  console.log(location);
+  const fromPath = location.state?.from?.pathname;
   return (
     <Container className="my-5">
       <Row className="justify-content-center">
@@ -23,7 +23,7 @@ const Login = () => {
                 className="center rounded-pill"
                 onClick={() =>
                   handleSignin(() => {
-                    history.push(location.state?.from?.pathname || "/");
+                    history.push(fromPath || "/");
                   })
                 }
               >

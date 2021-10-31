@@ -3,22 +3,28 @@ import { Col, Container, Row } from "react-bootstrap";
 
 const OverView = () => {
   return (
-    <Container className="my-5">
-      <Row className="p-3 rounded-3 shadow text-center ">
-        <Col>
-          <h1 className="text-primary">5</h1>
-          <p className="text-muted">USERS</p>
+    <div className="my-5 bg-primary w-100 mx-0 rounded-3 shadow-lg">
+      <Row>
+        <Col className=" text-light p-4">
+          <Container>
+            <h3 className=" fw-bold ls1">YOUR FRIEND</h3>
+            <h1 className=" fw-bolder text-dark ls1">DIYE ASBO</h1>
+            <p className="text-light">
+              we are providing you the best service with low cost.. we wanna be
+              your friend.. will you?
+            </p>
+            <p className="text-light">Take our service for lowcost</p>
+          </Container>
         </Col>
         <Col>
-          <h1 className=" text-primary">5</h1>
-          <p className="text-muted">USERS</p>
-        </Col>
-        <Col>
-          <h1 className="text-primary">5</h1>
-          <p className="text-muted">USERS</p>
+          <img
+            src="https://i.ibb.co/SPZm9fJ/overview.jpg"
+            alt="overview"
+            className="w-100 rounded-3 shadow-sm"
+          />
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 };
 

@@ -11,7 +11,7 @@ const DashBoard = () => {
   const { user } = useAuth();
   useEffect(() => {
     axios
-      .get("https://safe-reef-55674.herokuapp.com//bookings")
+      .get("http://localhost:5000/bookings")
       .then((res) => setAllBookings(res.data))
       .catch((err) => console.log(err.code));
   }, []);
@@ -29,18 +29,18 @@ const DashBoard = () => {
           <UserProfile />
         </Tab>
         <Tab eventKey="my-bookings" title="My Bookings">
-          <Row xs={12} md={6} lg={4} className="g-4">
-            {myBookings.map((service) => (
-              <BookedCard serviceData={service} />
-            ))}
-          </Row>
-        </Tab>
-        <Tab eventKey="all-bookings" title="All Bookings">
-          <Row xs={12} md={6} lg={4} className="g-4">
-            {allBookings.map((service) => (
-              <BookedCard serviceData={service} />
-            ))}
-          </Row>
+          {myBookings.length ? (
+            <Row xs={12} md={6} lg={4} className="g-4">
+              {myBookings.map((service) => (
+                <BookedCard
+                  serviceData={service}
+                  key={`${service.s_title}-for-${service.address.email}`}
+                />
+              ))}
+            </Row>
+          ) : (
+            <h1 className="fw-bold text-center text-muted">No Order Yet...</h1>
+          )}
         </Tab>
         <Tab eventKey="add-service" title="Add New Service">
           <AddService />

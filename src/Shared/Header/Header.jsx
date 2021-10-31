@@ -19,6 +19,13 @@ const Header = () => {
             </Nav.Link>
             {user.uid ? (
               <>
+                <Nav.Link
+                  className="text-center"
+                  as={NavLink}
+                  to="/all-bookings"
+                >
+                  All Bookings
+                </Nav.Link>
                 <Nav.Link className="text-center" as={NavLink} to="/dashboard">
                   Dashboard
                 </Nav.Link>
